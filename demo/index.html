@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>gravatar-element demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/js-md5/build/md5.min.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+
+    <link rel="import" href="../gravatar-element.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+
+    <div class="vertical-section-container centered">
+      <h4>Basic gravatar-element Demo</h4>
+      <demo-snippet>
+        <template>
+          <h4>identicon</h4>
+          <gravatar-element default-image="identicon"
+                            email="me@example.com"
+                            size="100">
+          </gravatar-element>
+
+          <h4>Mystery Man</h4>
+          <gravatar-element default-image="mm"
+                            email="me@example.com"
+                            size="100">
+          </gravatar-element>
+
+          <h4>MonsterID</h4>
+          <gravatar-element default-image="monsterid"
+                            email="me@example.com"
+                            size="100">
+          </gravatar-element>
+
+          <h4>Wavatar</h4>
+          <gravatar-element default-image="wavatar"
+                            email="me@example.com"
+                            size="100">
+          </gravatar-element>
+
+          <h4>Retro</h4>
+          <gravatar-element default-image="retro"
+                            email="me@example.com"
+                            size="100">
+          </gravatar-element>
+        </template>
+      </demo-snippet>
+    </div>
+
+  </body>
+</html>

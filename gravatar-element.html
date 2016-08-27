@@ -1,0 +1,108 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`gravatar-element` retrieves and renders a gravatar associated with a provided email address.
+
+Requires md5:
+```
+bower install --save md5
+```
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="gravatar-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    </style>
+
+  </template>
+
+
+  
+
+  <script>
+    'use strict'
+
+    Polymer({
+
+      is: 'gravatar-element',
+
+      properties: {
+        /**
+         * The email address to fetch
+         * @type {String}
+         */
+        email: {
+          type: String,
+          observer: '_emailChanged'
+        },
+
+        /**
+         * The image size to fetch.
+         * @type {String}
+         */
+        size: {
+          type: String,
+          value: '32',
+          observer: '_sizeChanged'
+        },
+
+        /**
+         * Default image or generator to use if the email hash does not match
+         * any existing gravatar.  Options:
+         * 
+         * `404`: do not load any image if none is associated with the email hash,
+         * instead return an HTTP 404 (File Not Found) response
+         * 
+         * `mm`: (mystery-man) a simple, cartoon-style silhouetted outline of a
+         * person (does not vary by email hash)
+         * 
+         * `identicon`: a geometric pattern based on an email hash
+         * 
+         * `monsterid`: a generated 'monster' with different colors, faces, etc
+         * 
+         * `wavatar`: generated faces with differing features and backgrounds
+         * 
+         * `retro`: awesome generated, 8-bit arcade-style pixelated faces
+         * 
+         * `blank`: a transparent PNG image
+         *
+         * `[url]`: a custom image
+         * 
+         * @type {String}
+         */
+        defaultImage: {
+          type: String,
+          value: 'identicon'
+        },
+
+      },
+
+
+      _emailChanged(email) {
+        if (!email) {
+          return
+        }
+
+        const hash = md5(this.email.toLowerCase())
+        const baseUrl = 'https://www.gravatar.com/avatar'
+        const queryString = `s=${this.size}&d=${this.defaultImage}`
+        this.style.background = `url(${baseUrl}/${hash}?${queryString})`
+      },
+
+      _sizeChanged(size) {
+        this.style.height = `${size}px`
+        this.style.width = `${size}px`
+      }
+
+
+    });
+  </script>
+</dom-module>

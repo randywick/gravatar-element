@@ -1,0 +1,22 @@
+{
+  "name": "gravatar-element",
+  "description": "A simple Polymer element to display a user's gravatar",
+  "authors": [
+    "Randy Wick <randy.wick@gmail.com>"
+  ],
+  "license": "MIT",
+  "main": "gravatar-element.html",
+  "keywords": [
+    "web-components",
+    "gravatar"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}

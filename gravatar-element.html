@@ -37,7 +37,7 @@ bower install --save md5
       properties: {
         href: {
           type: String,
-          computed: '_computeHref'
+          computed: '_computeHref(email, size, defaultImage)'
         },
 
         /**
@@ -91,20 +91,20 @@ bower install --save md5
       },
 
 
-      _computeHref() {
-        const hash = md5(this.email.toLowerCase())
+      _computeHref(email, size, defaultImage) {
+        if (!email) {
+          return ''
+        }
+
+        const hash = md5(email.toLowerCase())
         const baseUrl = 'https://www.gravatar.com/avatar'
-        const queryString = `s=${this.size}&d=${this.defaultImage}`
+        const queryString = `s=${size}&d=${defaultImage}`
 
         return `${baseUrl}/${hash}?${queryString}`
       },
 
 
       _emailChanged(email) {
-        if (!email) {
-          return
-        }
-        
         this.style.background = `url(${this.href})`
       },
 

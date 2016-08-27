@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-iconset/iron-iconset.html">
 
 <!--
 `gravatar-element` retrieves and renders a gravatar associated with a provided email address.
@@ -21,6 +22,14 @@ bower install --save md5
         background-repeat: no-repeat;
       }
     </style>
+
+    <iron-iconset id="iconset"
+                  src="[[href]]"
+                  name="gravatar"
+                  width="[[size]]"
+                  size="[[size]]"
+                  icons="gravatar">
+    </iron-iconset>
 
   </template>
 

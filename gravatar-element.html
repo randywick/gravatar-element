@@ -35,6 +35,11 @@ bower install --save md5
       is: 'gravatar-element',
 
       properties: {
+        href: {
+          type: String,
+          computed: '_computeHref'
+        },
+
         /**
          * The email address to fetch
          * @type {String}
@@ -86,15 +91,21 @@ bower install --save md5
       },
 
 
+      _computeHref() {
+        const hash = md5(this.email.toLowerCase())
+        const baseUrl = 'https://www.gravatar.com/avatar'
+        const queryString = `s=${this.size}&d=${this.defaultImage}`
+
+        return `${baseUrl}/${hash}?${queryString}`
+      },
+
+
       _emailChanged(email) {
         if (!email) {
           return
         }
-
-        const hash = md5(this.email.toLowerCase())
-        const baseUrl = 'https://www.gravatar.com/avatar'
-        const queryString = `s=${this.size}&d=${this.defaultImage}`
-        this.style.background = `url(${baseUrl}/${hash}?${queryString})`
+        
+        this.style.background = `url(${this.href})`
       },
 
       _sizeChanged(size) {

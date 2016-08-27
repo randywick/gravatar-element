@@ -97,6 +97,17 @@ bower install --save md5
           value: 'identicon'
         },
 
+        /**
+         * If set to true, the gravatar is not rendered; however, href is still
+         * available and icon is registered
+         * 
+         * @type {Boolean}
+         */
+        noDisplay: {
+          type: Boolean,
+          value: false
+        }
+
       },
 
 
@@ -114,12 +125,16 @@ bower install --save md5
 
 
       _emailChanged(email) {
-        this.style.background = `url(${this.href})`
+        if (!this.nodisplay) {
+          this.style.background = `url(${this.href})`
+        }
       },
 
       _sizeChanged(size) {
-        this.style.height = `${size}px`
-        this.style.width = `${size}px`
+        if (!this.nodisplay) {
+          this.style.height = `${size}px`
+          this.style.width = `${size}px`
+        }
       }
 
 
